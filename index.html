@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NOVA Estudio &amp; Servicios</title>
+<meta name="description" content="NOVA Estudio & Servicios: soluciones a medida, servicios especializados y atención personalizada. Consultanos por WhatsApp.">
+<meta property="og:title" content="NOVA Estudio & Servicios">
+<meta property="og:description" content="Conocé nuestros servicios y contactanos de forma simple y directa por WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1788953324777-3d98984c0fa0?w=1200&q=75&auto=format&fit=crop">
+<meta name="theme-color" content="#F7F4EE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+/* Layout: hero editorial texto + foto alta; servicios en grilla; propuesta foto/texto; galería en mosaico; banda de contacto oscura. Mobile-first. */
+:root{
+  --bg:#F7F4EE;        /* marfil */
+  --paper:#FFFFFF;
+  --ink:#1B1C1F;       /* texto principal */
+  --muted:#5E5C58;
+  --line:#E4DED3;
+  --sand:#ECE6DB;      /* fondo de fotos mientras cargan */
+  --accent:#2F4FD6;    /* azul cobalto */
+  --accent-soft:#E3E8FB;
+  --on-accent:#FFFFFF;
+  --band:#1B1C1F; --on-band:#F7F4EE; --band-muted:#B9B5AD;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Hanken Grotesk","Segoe UI",system-ui,sans-serif;
+  --max:1180px; --r:18px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141413; --paper:#1C1C1B; --ink:#F1EEE8; --muted:#ACA8A0; --line:#2C2B29; --sand:#24231F;
+  --accent:#8EA2FF; --accent-soft:#232A4A; --on-accent:#0E1230;
+  --band:#0C0C0B; --on-band:#F1EEE8; --band-muted:#9E9A92; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141413; --paper:#1C1C1B; --ink:#F1EEE8; --muted:#ACA8A0; --line:#2C2B29; --sand:#24231F;
+  --accent:#8EA2FF; --accent-soft:#232A4A; --on-accent:#0E1230;
+  --band:#0C0C0B; --on-band:#F1EEE8; --band-muted:#9E9A92; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);font-stretch:108%;line-height:1.05;letter-spacing:-.02em;text-wrap:balance;margin:0;font-weight:600}
+h2{font-size:clamp(1.9rem,4.4vw,3rem)}
+h3{font-size:1.2rem;letter-spacing:-.01em}
+p{margin:0}
+.kicker{font:600 .76rem/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+section{padding-block:76px}
+@media (min-width:900px){section{padding-block:104px}}
+
+/* Fotos: fondo arena mientras cargan o si fallan */
+.ph{background:var(--sand);border-radius:var(--r);overflow:hidden;position:relative}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph.failed img{display:none}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border-radius:999px;font:600 1rem/1 var(--body);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .18s ease,background-color .18s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-accent{background:var(--accent);color:var(--on-accent)}
+.btn-line{border-color:var(--ink);color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--bg)}
+
+/* Encabezado */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+.top.scrolled{border-bottom-color:var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.logo{display:inline-flex;align-items:baseline;gap:8px;text-decoration:none}
+.logo b{font:700 1.45rem/1 var(--display);font-stretch:125%;letter-spacing:.06em}
+.logo b i{font-style:normal;color:var(--accent)}
+.logo small{font-size:.78rem;color:var(--muted);letter-spacing:.02em;display:none}
+@media (min-width:520px){.logo small{display:inline}}
+.menu{display:none;gap:30px;font-weight:500}
+.menu a{text-decoration:none;color:var(--muted);transition:color .15s}
+.menu a:hover{color:var(--ink)}
+.top-cta{display:none}
+@media (min-width:900px){.menu,.top-cta{display:flex}.burger{display:none}}
+.top-cta.btn{min-height:44px;padding:0 18px;font-size:.94rem}
+.burger{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.burger svg{width:22px;height:22px}
+@media (min-width:900px){.burger{display:none}}
+.drawer{border-top:1px solid var(--line);padding-block:12px 20px}
+.drawer nav{display:grid}
+.drawer a:not(.btn){padding:14px 2px;border-bottom:1px solid var(--line);text-decoration:none;font:600 1.15rem/1 var(--display)}
+.drawer .btn{margin-top:18px;width:100%}
+@media (min-width:900px){.drawer{display:none!important}}
+
+/* Hero */
+.hero{padding-block:28px 72px}
+@media (min-width:900px){.hero{padding-block:56px 104px}}
+.hero-grid{display:grid;gap:36px}
+@media (min-width:900px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:56px;align-items:end}}
+.hero h1{font-size:clamp(2.6rem,8.4vw,5.3rem);font-weight:600;letter-spacing:-.035em;margin-block:18px 22px}
+.hero h1 span{color:var(--accent)}
+.hero .lead{font-size:1.14rem;color:var(--muted);max-width:44ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero .ctas .btn{flex:1 1 220px}
+@media (min-width:600px){.hero .ctas .btn{flex:0 0 auto}}
+.hero-media{display:grid;grid-template-columns:1fr .42fr;grid-template-rows:auto auto;gap:14px}
+.hero-media .main{grid-column:1/-1;aspect-ratio:4/3.4}
+@media (min-width:900px){.hero-media .main{aspect-ratio:4/4.6}}
+.hero-note{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 18px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r)}
+.hero-note p{font-size:.95rem;color:var(--muted);min-width:0}
+.hero-note p strong{color:var(--ink);font-weight:600;display:block}
+.hero-note a{flex:none;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero-copy > *{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.hero-copy > *:nth-child(2){animation-delay:.06s}.hero-copy > *:nth-child(3){animation-delay:.12s}.hero-copy > *:nth-child(4){animation-delay:.18s}
+
+/* Rubros (tira) */
+.rubros{border-block:1px solid var(--line);padding-block:20px}
+.rubros ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 16px;justify-content:center;color:var(--muted);font-weight:500}
+.rubros li{display:flex;align-items:center;gap:16px}
+.rubros li + li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none}
+
+/* Servicios */
+.head{display:grid;gap:14px;margin-bottom:42px}
+@media (min-width:900px){.head{grid-template-columns:1fr 1fr;align-items:end;gap:40px}}
+.services{display:grid;gap:18px;grid-template-columns:1fr}
+@media (min-width:640px){.services{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1080px){.services{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.svc{display:grid;grid-template-rows:auto 1fr;background:var(--paper);border:1px solid var(--line);border-radius:calc(var(--r) + 4px);overflow:hidden;min-width:0}
+.svc .ph{border-radius:0;aspect-ratio:4/3.2}
+.svc-body{display:grid;gap:10px;padding:22px 22px 24px;align-content:start}
+.svc-body p{color:var(--muted);font-size:.98rem}
+.svc-body .btn{margin-top:8px;justify-self:start;min-height:44px;padding:0 18px;font-size:.94rem}
+
+/* Propuesta */
+.prop{display:grid;gap:36px}
+@media (min-width:900px){.prop{grid-template-columns:.95fr 1.05fr;gap:72px;align-items:center}}
+.prop .ph{aspect-ratio:4/4.4}
+.prop-copy{display:grid;gap:22px}
+.prop-copy blockquote{margin:0;font:500 clamp(1.25rem,2.6vw,1.6rem)/1.4 var(--display);font-stretch:100%;letter-spacing:-.01em}
+.pillars{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
+.pillars li{display:grid;grid-template-columns:28px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.pillars svg{width:24px;height:24px;color:var(--accent);margin-top:3px}
+.pillars b{display:block;font-weight:600}
+.pillars span{color:var(--muted);font-size:.97rem}
+
+/* Galería */
+.gallery{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px}
+.gallery .ph:nth-child(1){grid-column:1/-1;grid-row:span 2}
+@media (min-width:760px){
+  .gallery{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:190px;gap:16px}
+  .gallery .ph:nth-child(1){grid-column:span 2;grid-row:span 2}
+}
+@media (min-width:1080px){.gallery{grid-auto-rows:230px}}
+
+/* Contacto */
+.contact{background:var(--band);color:var(--on-band);border-radius:28px;padding:44px 24px;display:grid;gap:28px;position:relative;overflow:hidden}
+@media (min-width:900px){.contact{padding:72px;grid-template-columns:1.2fr .8fr;align-items:end}}
+.contact .kicker{color:var(--band-muted)}
+.contact h2{font-size:clamp(2.2rem,6vw,4rem);margin-top:14px}
+.contact p{color:var(--band-muted);margin-top:14px;max-width:42ch;font-size:1.08rem}
+.contact-actions{display:grid;gap:14px}
+.contact .btn-accent{width:100%;min-height:58px;font-size:1.05rem}
+.socials{display:flex;gap:12px}
+.social{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;border-radius:999px;border:1.5px solid color-mix(in srgb,var(--on-band) 28%,transparent);color:var(--on-band);text-decoration:none;font-weight:600;transition:background-color .18s,color .18s}
+.social:hover{background:var(--on-band);color:var(--band)}
+.social svg{width:20px;height:20px}
+.ring{position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;border:1px solid color-mix(in srgb,var(--on-band) 12%,transparent);pointer-events:none}
+.ring::after{content:"";position:absolute;inset:60px;border-radius:50%;border:1px solid color-mix(in srgb,var(--on-band) 9%,transparent)}
+
+/* Pie */
+footer{padding-block:48px calc(110px + env(safe-area-inset-bottom,0px))}
+@media (min-width:900px){footer{padding-bottom:48px}}
+.foot{display:grid;gap:28px}
+@media (min-width:900px){.foot{grid-template-columns:1.2fr 1fr 1fr;align-items:start}}
+.foot h4{margin:0 0 12px;font:600 .76rem/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot a{text-decoration:none;color:var(--ink)}
+.foot a:hover{color:var(--accent)}
+.legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:.88rem;color:var(--muted)}
+
+/* WhatsApp flotante (solo en celular, donde el botón del encabezado se oculta) */
+.wa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50;display:flex;align-items:center;gap:10px;height:56px;padding:0 20px 0 16px;border-radius:999px;background:var(--ink);color:var(--bg);text-decoration:none;font-weight:600;box-shadow:0 12px 30px rgba(0,0,0,.22)}
+.wa-float svg{width:24px;height:24px}
+@media (min-width:900px){.wa-float{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="Ir al inicio"><b data-brand>NOV<i>A</i></b><small data-k="marcaSub">Estudio &amp; Servicios</small></a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-primary top-cta" data-wa="general" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#i-wa"/></svg>Consultar por WhatsApp</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Abrir menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path id="burger-path" d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+  <div class="drawer wrap" id="drawer" hidden>
+    <nav aria-label="Menú móvil">
+      <a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a>
+      <a class="btn btn-primary" data-wa="general" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#i-wa"/></svg>Consultar por WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="kicker" data-k="heroKicker">Estudio &amp; Servicios</span>
+        <h1 data-k="heroTitulo">Todo lo que necesitás, en un solo lugar</h1>
+        <p class="lead" data-k="heroTexto">Conocé nuestros servicios, descubrí lo que podemos ofrecerte y contactanos de forma simple y directa.</p>
+        <div class="ctas">
+          <a class="btn btn-accent" data-wa="general" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#i-wa"/></svg>Consultar por WhatsApp</a>
+          <a class="btn btn-line" href="#servicios">Conocer nuestros servicios</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="ph main"><img data-img="hero" alt="" fetchpriority="high"></div>
+        <div class="hero-note">
+          <p><strong>Respondemos por WhatsApp</strong>Escribinos y coordinamos lo que necesitás.</p>
+          <a data-wa="general" href="#" target="_blank" rel="noopener">Escribir →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rubros"><div class="wrap"><ul id="rubros"></ul></div></div>
+
+  <section id="servicios">
+    <div class="wrap">
+      <div class="head">
+        <div style="display:grid;gap:14px"><span class="kicker">Servicios</span><h2>Lo que podemos hacer por vos</h2></div>
+        <p class="muted" data-k="serviciosIntro">Elegí lo que te interesa y escribinos directo desde cada opción. Te respondemos con la información que necesitás.</p>
+      </div>
+      <div class="services" id="services"></div>
+    </div>
+  </section>
+
+  <section id="nosotros" style="padding-top:0">
+    <div class="wrap prop">
+      <div class="ph"><img data-img="propuesta" alt=""></div>
+      <div class="prop-copy">
+        <span class="kicker">Conocé nuestra propuesta</span>
+        <h2>Una experiencia simple desde el primer contacto</h2>
+        <blockquote data-k="propuestaTexto">Cada cliente tiene una necesidad diferente. Por eso, ofrecemos alternativas pensadas para ayudarte a encontrar lo que buscás, con atención cercana y una experiencia simple desde el primer contacto.</blockquote>
+        <ul class="pillars" id="pillars"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeria" style="padding-top:0" aria-label="Galería">
+    <div class="wrap">
+      <div class="head" style="margin-bottom:32px">
+        <div style="display:grid;gap:14px"><span class="kicker">Galería</span><h2>Un vistazo a nuestro espacio</h2></div>
+      </div>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <section id="contacto" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact">
+        <span class="ring" aria-hidden="true"></span>
+        <div>
+          <span class="kicker">Contacto</span>
+          <h2>¿Querés saber más?</h2>
+          <p>Estamos para ayudarte. Escribinos y te contamos cómo podemos acompañarte.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-accent" data-wa="contacto" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#i-wa"/></svg>Escribinos por WhatsApp</a>
+          <div class="socials">
+            <a class="social" data-social="instagram" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ig"/></svg>Instagram</a>
+            <a class="social" data-social="facebook" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-fb"/></svg>Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#inicio"><b data-brand>NOV<i>A</i></b><small data-k="marcaSub" style="display:inline">Estudio &amp; Servicios</small></a>
+        <p class="muted" style="margin-top:12px;max-width:34ch" data-k="pieTexto">Atención personalizada y contacto directo por WhatsApp.</p>
+      </div>
+      <div><h4>Secciones</h4><ul><li><a href="#inicio">Inicio</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a data-wa="general" href="#" target="_blank" rel="noopener">WhatsApp</a></li><li><a data-social="instagram" href="#" target="_blank" rel="noopener">Instagram</a></li><li><a data-social="facebook" href="#" target="_blank" rel="noopener">Facebook</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© <span id="year">2026</span> <span data-k="marca">NOVA Estudio &amp; Servicios</span></span><span>Sitio diseñado por DeLer</span></div>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa="general" href="#" target="_blank" rel="noopener" aria-label="Consultar por WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#i-wa"/></svg>Consultar</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.6c-2 0-3.9-.5-5.5-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5.1 2.1.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3Z"/></symbol>
+</svg>
+
+<script>
+/* =====================================================================
+   CONFIGURACIÓN DEL CLIENTE
+   Para adaptar la demo a otro negocio, cambiá solo este bloque.
+   - whatsapp: con código de país y área, sin "+", espacios ni guiones.
+   - imágenes: cualquier URL de foto (o una ruta propia, ej. "img/hero.jpg").
+   ===================================================================== */
+const CONFIG = {
+  marca: "NOVA Estudio & Servicios",
+  marcaCorta: "NOVA",               // la última letra se pinta con el color de acento
+  marcaSub: "Estudio & Servicios",
+  heroKicker: "Estudio & Servicios",
+  heroTitulo: "Todo lo que necesitás, en un solo lugar",
+  heroTexto: "Conocé nuestros servicios, descubrí lo que podemos ofrecerte y contactanos de forma simple y directa.",
+  serviciosIntro: "Elegí lo que te interesa y escribinos directo desde cada opción. Te respondemos con la información que necesitás.",
+  propuestaTexto: "Cada cliente tiene una necesidad diferente. Por eso, ofrecemos alternativas pensadas para ayudarte a encontrar lo que buscás, con atención cercana y una experiencia simple desde el primer contacto.",
+  pieTexto: "Atención personalizada y contacto directo por WhatsApp.",
+
+  whatsapp: "5491112345678",        // NÚMERO DE EJEMPLO: reemplazar por el del cliente
+  mensajes: {
+    general:  "¡Hola! Vi su página web y quería hacer una consulta.",
+    contacto: "¡Hola! Quería saber más sobre lo que ofrecen."
+  },
+  redes: {
+    instagram: "https://www.instagram.com/",   // reemplazar por el perfil del cliente
+    facebook:  "https://www.facebook.com/"     // reemplazar por la página del cliente
+  },
+
+  rubros: ["Consultorios", "Estética y bienestar", "Servicios técnicos", "Indumentaria y accesorios", "Showrooms"],
+
+  servicios: [
+    { titulo: "Soluciones a medida", texto: "Escuchamos lo que necesitás y te proponemos una alternativa pensada para tu caso.",
+      img: "https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e", alt: "Dos personas revisando una propuesta en una computadora",
+      mensaje: "¡Hola! Quería consultar por sus soluciones a medida." },
+    { titulo: "Servicios especializados", texto: "Trabajos realizados con dedicación, en un espacio preparado para cada tarea.",
+      img: "https://images.unsplash.com/photo-1781156216069-f51d03f20e4f", alt: "Taller luminoso con mesa de trabajo de madera",
+      mensaje: "¡Hola! Quería consultar por sus servicios especializados." },
+    { titulo: "Productos seleccionados", texto: "Una selección cuidada de productos para que elijas con tranquilidad.",
+      img: "https://images.unsplash.com/photo-1786325492068-00eb1cd93b78", alt: "Estantes blancos con piezas de cerámica y objetos de diseño",
+      mensaje: "¡Hola! Quería consultar por sus productos." },
+    { titulo: "Atención personalizada", texto: "Te acompañamos antes, durante y después de cada consulta, por el canal que te quede cómodo.",
+      img: "https://images.unsplash.com/photo-1753164597612-5e71b83fda91", alt: "Persona atendiendo una consulta por teléfono mientras trabaja",
+      mensaje: "¡Hola! Quería hacer una consulta personalizada." }
+  ],
+
+  pilares: [
+    { titulo: "Atención cercana", texto: "Hablás directamente con quien te va a atender." },
+    { titulo: "Opciones para cada necesidad", texto: "Te mostramos alternativas para que elijas la que mejor te queda." },
+    { titulo: "Contacto simple", texto: "Un mensaje de WhatsApp alcanza para empezar." }
+  ],
+
+  imagenes: {
+    hero:      { src: "https://images.unsplash.com/photo-1788953324777-3d98984c0fa0", alt: "Recepción de un estudio con mostrador de mármol, flores y lámpara" },
+    propuesta: { src: "https://images.unsplash.com/photo-1485217988980-11786ced9454", alt: "Persona trabajando con una computadora portátil en un ambiente luminoso" }
+  },
+  galeria: [
+    { src: "https://images.unsplash.com/photo-1786325492188-c1b65d7dea78", alt: "Estudio moderno con estantes y bancos" },
+    { src: "https://images.unsplash.com/photo-1599543284102-4cddc128293b", alt: "Manos sosteniendo una tela de encaje blanca" },
+    { src: "https://images.unsplash.com/photo-1680034976850-129b4a07be56", alt: "Manos preparando una bolsa de papel sobre una mesa" },
+    { src: "https://images.unsplash.com/photo-1625585598750-3535fe40efb3", alt: "Rincón con escalera de madera, banqueta blanca y planta" },
+    { src: "https://images.unsplash.com/photo-1770591134728-1bc068746330", alt: "Sillón y mesa vistos a través de una ventana" }
+  ]
+};
+
+/* ===================== No hace falta tocar nada de acá para abajo ===================== */
+(function () {
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const waLink = (msg) => "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg);
+  const photo = (src, w) => src.startsWith("http") && src.includes("unsplash.com") ? src + "?auto=format&fit=crop&q=75&w=" + w : src;
+  const imgTag = (src, alt, w, lazy = true) => {
+    const s = photo(src, w), s2 = photo(src, w * 2);
+    return '<img src="' + s + '"' + (s !== s2 ? ' srcset="' + s + ' 1x, ' + s2 + ' 2x"' : "") + ' alt="' + alt + '"' + (lazy ? ' loading="lazy"' : "") + ' decoding="async">';
+  };
+  const ICONS = [
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-3.1-6.3"/><path d="m9 11.5 2.5 2.5L20 5.5"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12Z"/></svg>'
+  ];
+
+  // Textos
+  $$("[data-k]").forEach(el => { const v = CONFIG[el.dataset.k]; if (v) el.textContent = v; });
+  const c = CONFIG.marcaCorta;
+  $$("[data-brand]").forEach(el => el.innerHTML = c.slice(0, -1) + "<i>" + c.slice(-1) + "</i>");
+  document.title = CONFIG.marca;
+
+  // Rubros
+  $("#rubros").innerHTML = CONFIG.rubros.map(r => "<li>" + r + "</li>").join("");
+
+  // Servicios
+  $("#services").innerHTML = CONFIG.servicios.map((s, i) =>
+    '<article class="svc"><div class="ph">' + imgTag(s.img, s.alt, 640) + '</div>' +
+    '<div class="svc-body"><h3>' + s.titulo + '</h3><p>' + s.texto + '</p>' +
+    '<a class="btn btn-line" data-wa-msg="' + i + '" href="#" target="_blank" rel="noopener">Consultar</a></div></article>'
+  ).join("");
+
+  // Pilares de la propuesta
+  $("#pillars").innerHTML = CONFIG.pilares.map((p, i) =>
+    "<li>" + ICONS[i % ICONS.length] + "<div><b>" + p.titulo + "</b><span>" + p.texto + "</span></div></li>"
+  ).join("");
+
+  // Imágenes fijas
+  $$("[data-img]").forEach(img => {
+    const d = CONFIG.imagenes[img.dataset.img]; if (!d) return;
+    const w = img.dataset.img === "hero" ? 1100 : 900;
+    img.src = photo(d.src, w); img.srcset = photo(d.src, w) + " 1x, " + photo(d.src, w * 2) + " 2x"; img.alt = d.alt;
+  });
+
+  // Galería
+  $("#gallery").innerHTML = CONFIG.galeria.map((g, i) => '<div class="ph">' + imgTag(g.src, g.alt, i === 0 ? 1000 : 600) + "</div>").join("");
+
+  // Si una foto no carga, queda el bloque de color (sin ícono roto)
+  $$(".ph img").forEach(img => {
+    const fail = () => img.parentElement.classList.add("failed");
+    if (img.complete && img.naturalWidth === 0 && img.src) fail();
+    img.addEventListener("error", fail);
+  });
+
+  // WhatsApp
+  $$("[data-wa]").forEach(a => a.href = waLink(CONFIG.mensajes[a.dataset.wa] || CONFIG.mensajes.general));
+  $$("[data-wa-msg]").forEach(a => a.href = waLink(CONFIG.servicios[+a.dataset.waMsg].mensaje));
+
+  // Redes
+  $$("[data-social]").forEach(a => a.href = CONFIG.redes[a.dataset.social]);
+
+  // Menú móvil
+  const burger = $("#burger"), drawer = $("#drawer"), path = $("#burger-path");
+  const setMenu = (open) => {
+    drawer.hidden = !open; burger.setAttribute("aria-expanded", open);
+    burger.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    path.setAttribute("d", open ? "M6 6l12 12M18 6 6 18" : "M4 7h16M4 12h16M4 17h16");
+  };
+  burger.addEventListener("click", () => setMenu(drawer.hidden));
+  $$("#drawer a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+
+  // Línea del encabezado al hacer scroll
+  const top = $("#top");
+  const onScroll = () => top.classList.toggle("scrolled", window.scrollY > 8);
+  onScroll(); window.addEventListener("scroll", onScroll, { passive: true });
+
+  $("#year").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
